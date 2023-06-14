@@ -1,0 +1,33 @@
+# Pliki i katalogi generowane przez środowisko programistyczne
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Katalogi wygenerowane przez narzędzie budujące
+build/
+dist/
+*.egg-info/
+
+# Katalogi generowane przez IDE
+.idea/
+.vscode/
+
+# Pliki konfiguracyjne
+*.pyc
+*.env
+.pytest*
+__pycache__
+
+# Pliki tymczasowe
+*.swp
+*~
+
+# Pliki z logami
+*.log
+
+# Katalogi generowane przez narzędzia testujące
+htmlcov/
+
+# Pliki środowiska wirtualnego
+.venv/
