@@ -5,6 +5,8 @@ name = "pypi"
 
 [packages]
 requests = "==2.31.0"
+pandas = "*"
+pipfile = "*"
 
 [dev-packages]
 pytest = "==7.3.2"
