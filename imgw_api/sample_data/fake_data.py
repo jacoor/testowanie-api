@@ -744,3 +744,16 @@ weather_data = [
       "cisnienie":"1014.1"
    }
 ]
+
+jelenia_weather = {
+      "id_stacji":"12500",
+      "stacja":"Jelenia Góra",
+      "data_pomiaru":"2023-06-16",
+      "godzina_pomiaru":"22",
+      "temperatura":"12.1",
+      "predkosc_wiatru":"0",
+      "kierunek_wiatru":"0",
+      "wilgotnosc_wzgledna":"100.0",
+      "suma_opadu":"3",
+      "cisnienie":"1015.9"
+   }
