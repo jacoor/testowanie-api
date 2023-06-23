@@ -4,6 +4,7 @@ from pytest import mark
 
 
 @mark.imgw
+@mark.exploration_tests
 def test_get_all_current_data(fake_weather):
     fake_keys = pd.DataFrame(fake_weather).keys()
 
@@ -17,6 +18,7 @@ def test_get_all_current_data(fake_weather):
 
 
 @mark.imgw
+@mark.exploration_tests
 def test_get_current_weather_data_by_station_id(fake_jelenia_weather):
     response = requests.get(
         "https://danepubliczne.imgw.pl/api/data/synop/id/12500"
@@ -26,6 +28,7 @@ def test_get_current_weather_data_by_station_id(fake_jelenia_weather):
 
 
 @mark.imgw
+@mark.exploration_tests
 def test_get_current_weather__data_by_bad_station_id():
     response = requests.get(
         "https://danepubliczne.imgw.pl/api/data/synop/id/125e00"
@@ -35,6 +38,7 @@ def test_get_current_weather__data_by_bad_station_id():
 
 
 @mark.imgw
+@mark.exploration_tests
 def test_get_current_weather_data_by_name(fake_jelenia_weather):
     response = requests.get(
         f"https://danepubliczne.imgw.pl/api/data/synop/station/jeleniagora"
