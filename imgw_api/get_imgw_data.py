@@ -17,9 +17,9 @@ class WeatherImgw:
 
         if response:
             df_data = pd.DataFrame(response)
-            return print(df_data)
+            return df_data
 
-        print("The newest data didn't come jet. Wait 5 min and try again")
+        return "The newest data didn't come yet. Wait 5 min and try again"
 
     @classmethod
     def get_current_weather_data_by_station_id(cls, station_id):
@@ -31,13 +31,12 @@ class WeatherImgw:
         response = requests.get(
             f"{cls.URL}/id/{station_id}"
         ).json()
-
+        print(response)
         if response.get("status") is False:
-            return print(response.get("message"))
+            return response.get("message")
 
         city_df = pd.Series(response)
-
-        return print(city_df)
+        return city_df
 
     @classmethod
     def get_current_weather_data_by_name(cls, station_name):
@@ -49,11 +48,11 @@ class WeatherImgw:
         response = requests.get(f"{cls.URL}/station/{station_name}").json()
 
         if response.get("status") is False:
-            return print(response.get("message"))
+            return response.get("message")
 
         city_df = pd.Series(response)
 
-        return print(city_df)
+        return city_df
 
 
 class WeatherManager(WeatherImgw):
@@ -70,18 +69,22 @@ class WeatherManager(WeatherImgw):
         Print of right result as Data Frame or DataSeries
         """
         if self.choice_number == "1":
-            self.get_all_current_data()
+            print(self.get_all_current_data())
             self.choice_number = input("Co teraz wybierasz?\n")
 
         elif self.choice_number == "2":
             station_id = input("Podaj numer stacji: ")
-            self.get_current_weather_data_by_station_id(station_id)
+            print(self.get_current_weather_data_by_station_id(station_id))
             self.choice_number = input("\nCo teraz wybierasz?\n")
 
         elif self.choice_number == "3":
             station_name = input("Podaj numer nazwę stacji: ")
             station_name = station_name.lower().replace(" ", "")
-            self.get_current_weather_data_by_name(unidecode(station_name))
+            print(self.get_current_weather_data_by_name(
+                unidecode(
+                    station_name
+                )
+            ))
             self.choice_number = input("\nCo teraz wybierasz?\n")
 
         elif self.choice_number == "0":
