@@ -146,4 +146,14 @@ def test_get_get_current_weather_data_values_by_station_id(
     assert result["temperatura"] == fake_jelenia_weather["temperatura"]
 
 
+@mark.imgw
+@mark.requestsmock_tdd
+def test_get_all_current_data_html(requests_mock, fake_weather):
+    requests_mock.get(
+        f"{WeatherImgw.URL}/format/html",
+        json=fake_weather
+    )
 
+    result = WeatherImgw.get_all_current_data_html()
+
+    assert isinstance(result, str)

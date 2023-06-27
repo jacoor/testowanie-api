@@ -54,6 +54,11 @@ class WeatherImgw:
 
         return city_df
 
+    @classmethod
+    def get_all_current_data_html(cls):
+        response = requests.get(f"{cls.URL}/format/html").text
+        return response
+
 
 class WeatherManager(WeatherImgw):
     def __init__(self, name, choice_number=None, action=True):
@@ -87,6 +92,10 @@ class WeatherManager(WeatherImgw):
             ))
             self.choice_number = input("\nCo teraz wybierasz?\n")
 
+        elif self.choice_number == "4":
+            print(self.get_all_current_data_list())
+            self.choice_number = input("Co teraz wybierasz?\n")
+
         elif self.choice_number == "0":
             self.action = False
             return self.action
@@ -109,6 +118,7 @@ if __name__ == "__main__":
         "1 - pobierz aktualną pogodę dla całej Polski\n"
         "2 - pobierz aktualną pogodę dla miasta w Polsce podając jego id\n"
         "3 - pobierz aktualną pogodę dla miasta w Polsce podając jego nazwę\n"
+        "4 - pobierz aktualną pogodę dla całej Polski jako lista lokalizacji\n"
         "0 - zakończ działanie programu\n"
     )
 
